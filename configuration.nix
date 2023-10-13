@@ -7,9 +7,10 @@
 {
   imports =
     [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-	  ./tor.nix
-    ];
+      ./hardware-configuration.nix	 
+      ./tor.nix
+      ./backup.nix
+        ];
 
 services.openssh.settings.PermitRootLogin = "yes";
   # Use the GRUB 2 boot loader.
@@ -77,6 +78,7 @@ services.openssh.settings.PermitRootLogin = "yes";
     tmux
     git
     firefox
+    restic
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -130,6 +132,22 @@ services.openssh.settings.PermitRootLogin = "yes";
     services.prometheus = {
     enable = true;
     port = 9001;
+	    exporters = {
+      node = {
+        enable = true;
+        enabledCollectors = [ "systemd" ];
+        port = 9002;
+      };
+    };
+    scrapeConfigs = [
+      {
+        job_name = "chrysalis";
+        static_configs = [{
+          targets = [ "127.0.0.1:${toString config.services.prometheus.exporters.node.port}" ];
+        }];
+      }
+    ];
+
   };
 
 
