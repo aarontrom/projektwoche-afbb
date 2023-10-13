@@ -10,7 +10,8 @@
       ./hardware-configuration.nix	 
       ./tor.nix
       ./backup.nix
-        ];
+      ./monitoring.nix
+   ];
 
 services.openssh.settings.PermitRootLogin = "yes";
   # Use the GRUB 2 boot loader.
@@ -21,7 +22,7 @@ services.openssh.settings.PermitRootLogin = "yes";
   # Define on which hard drive you want to install Grub.
   boot.loader.grub.device = "/dev/sda"; # or "nodev" for efi only
 
-   networking.hostName = "nixos-prox"; # Define your hostname.
+  networking.hostName = "nixos-prox"; # Define your hostname.
   # Pick only one of the below networking options.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   # networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
@@ -113,43 +114,6 @@ services.openssh.settings.PermitRootLogin = "yes";
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "23.05"; # Did you read the comment?
   
-    # grafana configuration
-  services.grafana = {
-    enable = true;
-    domain = "grafana.pele";
-    port = 2342;
-    addr = "127.0.0.1";
-  };
-
-  # nginx reverse proxy
-  services.nginx.virtualHosts.${config.services.grafana.domain} = {
-    locations."/" = {
-        proxyPass = "http://127.0.0.1:${toString config.services.grafana.port}";
-        proxyWebsockets = true;
-    };
-  };
-  
-    services.prometheus = {
-    enable = true;
-    port = 9001;
-	    exporters = {
-      node = {
-        enable = true;
-        enabledCollectors = [ "systemd" ];
-        port = 9002;
-      };
-    };
-    scrapeConfigs = [
-      {
-        job_name = "chrysalis";
-        static_configs = [{
-          targets = [ "127.0.0.1:${toString config.services.prometheus.exporters.node.port}" ];
-        }];
-      }
-    ];
-
-  };
-
 
 
 }
