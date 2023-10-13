@@ -2,8 +2,8 @@
 
 ```mermaid
 flowchart TB
-  Partitionieren --> NeueConfiguration --> Installieren
-  Partitionieren --> RückspielenConfiguration --> Installieren
+  Partitionieren --> NeueConfiguration[neue Konfiguration] --> Installieren
+  Partitionieren --> RückspielenConfiguration[Rückspielen vorhandenen Konfiguration] --> Installieren
 ```
 
 ## Installation von NixOS 
