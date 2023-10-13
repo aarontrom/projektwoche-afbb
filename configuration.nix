@@ -41,10 +41,9 @@ services.openssh.settings.PermitRootLogin = "yes";
    };
 
   # Enable the X11 windowing system.
-  # services.xserver.enable = true;
-
-
-  
+  services.xserver.enable = true;
+ 
+ services.xserver.desktopManager.xfce.enable = true;  
 
   # Configure keymap in X11
   # services.xserver.layout = "us";
@@ -77,6 +76,7 @@ services.openssh.settings.PermitRootLogin = "yes";
     wget
     tmux
     git
+    firefox
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -110,6 +110,29 @@ services.openssh.settings.PermitRootLogin = "yes";
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "23.05"; # Did you read the comment?
+  
+    # grafana configuration
+  services.grafana = {
+    enable = true;
+    domain = "grafana.pele";
+    port = 2342;
+    addr = "127.0.0.1";
+  };
+
+  # nginx reverse proxy
+  services.nginx.virtualHosts.${config.services.grafana.domain} = {
+    locations."/" = {
+        proxyPass = "http://127.0.0.1:${toString config.services.grafana.port}";
+        proxyWebsockets = true;
+    };
+  };
+  
+    services.prometheus = {
+    enable = true;
+    port = 9001;
+  };
+
+
 
 }
 
