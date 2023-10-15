@@ -1,6 +1,6 @@
 ## Projekt Tor-Relay 
 
-### Projektmitglieder:
+##### Projektmitglieder:
 Lindsey, Michel, Aaron
 
 ### Beschreibung:
@@ -64,18 +64,18 @@ Für das Monitoring muss ich noch Gedanken machen.
 
 ## Was ist passiert?
 
-Dienstag:
+##### Dienstag:
 - Projekteinführung und -besprechung
 - Aufgabenverteilung
 - Gedanken über Monitoring und Backup + Strategie
 - Bereitstellen der Server + Installation NixOS
 - Einrichten der SSH-Schlüssel, sodass alle Projektmitglieder Zugriff haben
 
-Donnerstag: 
+##### Donnerstag: 
 - Proxmox-Installation auf einem IT-Labor-Server
 - NixOS-Installation auf einem It-Labor Rechner
 
-Freitag:
+##### Freitag:
 - Einbindung des Tor-Relay
 - Einbindung des Monitoring-Systems mit Prometheus und Grafana
 - Einbindung des Backupsystems mit restic

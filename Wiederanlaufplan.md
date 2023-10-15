@@ -23,7 +23,7 @@ Nach dem Booten eines Live-Sticks auf einer Maschine oder VM sollten folgende Be
 
 - sudo nixos-install
 
-## Implementierung der Konfigurationsdateien  Repositories auf dem Server
+## Implementierung der Konfigurationsdateien Repositories auf dem Server
 
 - cd /etc/nixos
 - git clone "Hier die Adresse dieses Repositories hinzufügen" ##klonen des Verzeichnisses auf die lokale Maschine
@@ -31,4 +31,5 @@ Nach dem Booten eines Live-Sticks auf einer Maschine oder VM sollten folgende Be
 
 ### Hinweise: 
 
-Mit sudo parted /dev/sda -- print kann die aktuelle Konfiguration angezeigt werden. Zudem gibt es den Befehl lsblk, mit dem 
+Mit sudo "parted /dev/sda -- print" kann die aktuelle Konfiguration angezeigt werden. Zudem gibt es den Befehl "lsblk", mit dem die Blockdevices angezeigt werden können. 
+
