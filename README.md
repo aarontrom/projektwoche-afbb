@@ -59,7 +59,7 @@ Für das Monitoring muss ich noch Gedanken machen.
 - 1 mal wöchentlich 
 - 1 mal monatlich
 
---> mit jeweils Pruning, sodass nicht 
+--> mit jeweils Pruning, sodass Speicherplatz effizient genutzt werden kann
 
 
 ## Was ist passiert?

@@ -1,0 +1,5 @@
+Hallo Herr Lötzsch, 
+
+unter diesem Git-Repository ist unser Wiederanlaufplan zu finden: https://git.tromdienste.de/aaron/Projektwoche-Afbb/src/branch/main/README.md
+
+An diesem Projekt haben Lindsay, Michel und Aaron gearbeitet.
