@@ -16,7 +16,7 @@
 services.openssh.settings.PermitRootLogin = "yes";
   # Use the GRUB 2 boot loader.
   boot.loader.grub.enable = true;
-  boot.loader.grub.device = "/dev/sda";
+  boot.loader.grub.device = "/dev/sda3";
   boot.loader.grub.forceInstall = true;
 
   # boot.loader.grub.efiSupport = true;
